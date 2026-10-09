@@ -1,10 +1,10 @@
 # ClearLedger Soroban Contracts
 
-**The on-chain coordination layer for ClearLedger’s Stellar invoice-finance prototype.**
+**Invoice-finance infrastructure built with Soroban on Stellar.**
 
-This Rust workspace contains Soroban contracts for participant registration, invoice lifecycle management, USDC liquidity pools, and escrow coordination. Together, they provide explicit transaction state and composable interfaces for the ClearLedger application and SDKs.
+This Rust workspace implements ClearLedger’s on-chain coordination layer on [Soroban, Stellar’s smart-contract platform](https://developers.stellar.org/docs/build/smart-contracts/overview). The contracts manage participant verification, invoice lifecycle transitions, USDC liquidity pools, and escrow operations, with application and SDK integrations built around Stellar’s contract interfaces and events.
 
-[Open the testnet app](https://clearledger-three.vercel.app) · [Application repository](https://github.com/Stellar-Clear/clearledger) · [Contract architecture](docs/NEW_DESIGN.md) · [Deployment guide](DEPLOYMENT.md) · [Security policy](SECURITY.md)
+[Launch the Stellar Testnet app](https://clearledger-three.vercel.app) · [Application repository](https://github.com/Stellar-Clear/clearledger) · [Stellar Testnet deployments](#testnet-deployments) · [Soroban architecture](docs/NEW_DESIGN.md) · [Deployment guide](DEPLOYMENT.md) · [Security policy](SECURITY.md)
 
 ## Contract system
 
@@ -29,7 +29,7 @@ Participant verification and invoice status are checked on-chain at relevant tra
 
 ## Testnet deployments
 
-The current USDC contracts are deployed on Stellar Testnet. Addresses may change when contracts are redeployed; check the deployment guide for address lifecycle details.
+ClearLedger’s USDC contracts are live on Stellar Testnet. These Soroban contract IDs connect the application stack to Stellar’s test network; addresses may change when contracts are redeployed. See the [deployment guide](DEPLOYMENT.md) for address lifecycle details.
 
 <!-- START_DEPLOYED_ADDRESSES -->
 | Contract | Address |
@@ -40,7 +40,7 @@ The current USDC contracts are deployed on Stellar Testnet. Addresses may change
 | pool_contract | `CDBJEGCV3IENZJKCK3LYYOSA7B5NZSPELBE7FPFHUKLG74LRJTCQIZ45` |
 <!-- END_DEPLOYED_ADDRESSES -->
 
-[View contracts on Stellar Expert Testnet](https://stellar.expert/explorer/testnet)
+**Inspect on Stellar Expert:** [Registry](https://stellar.expert/explorer/testnet/contract/CCGHK4XJA23BVPTADPCOUV76G2KYAAAKQIKPF35FN5RFP2TT47TXWQNT) · [Invoice](https://stellar.expert/explorer/testnet/contract/CCZN4GM5O7D6RGI4P4FCKIB5HMRKDWOWY7M3YZ637XZFCGM7SXGIVAZ6) · [Escrow](https://stellar.expert/explorer/testnet/contract/CC3EDR7B64Y5KZEJETATNVUWYGPHGUAR2V2QYTUCDOZJMYY3XEVAIGQB) · [Pool](https://stellar.expert/explorer/testnet/contract/CDBJEGCV3IENZJKCK3LYYOSA7B5NZSPELBE7FPFHUKLG74LRJTCQIZ45)
 
 ## Build and contribute
 
@@ -66,6 +66,6 @@ The deployment script supports resumable deployments and updates the address tab
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a change. Architecture and integration references include the [threat model](docs/THREAT_MODEL.md), [event catalog](docs/EVENTS.md), [storage schema](docs/STORAGE.md), and [known limitations](docs/LIMITATIONS.md).
 
-## Security and project status
+## Network and security
 
-These contracts are experimental and have not been formally audited. The current testnet implementation has known functional and trust-model limitations, including an issuer payout path that is not yet wired into invoice funding. Review [known limitations](docs/LIMITATIONS.md) and [SECURITY.md](SECURITY.md) before integrating. Do not use real funds or treat testnet assets as redeemable value.
+These contracts are deployed on Stellar Testnet and have not been formally audited. The current implementation has known functional and trust-model limitations, including an issuer payout path that is not yet wired into invoice funding. Review [known limitations](docs/LIMITATIONS.md) and [SECURITY.md](SECURITY.md) before integrating. Do not use real funds or treat testnet assets as redeemable value.
